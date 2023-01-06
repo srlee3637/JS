@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="aaa();">인라인이벤트</button>
+    <button onclick="bbb(this);">1</button>
+    <button onclick="bbb(this);">2</button>
+    <button onclick="bbb(this);">3</button>
+
+    <script>
+        //인라인이벤트 - 함수의 선언은 script에 하고, 태그에서 연결
+        function aaa(){
+            alert(1);
+        }
+
+        function bbb(a){
+            //this가 태그에서 사용되면 태그 자기 자신을 가리킴
+            //console.log(a); //a는 태그 자신
+            a.innerHTML = 'hello';
+        }
+    </script>
+</body>
+</html>

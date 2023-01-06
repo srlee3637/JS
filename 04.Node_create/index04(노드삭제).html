@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+	<button button="type" id="delOne">하나씩 삭제</button>
+    <button button="type" id="del">일괄 삭제</button>
+    <table>
+        <thead>
+            <th><input type="checkbox" class="allCheck"></th>
+            <th>번호</th>
+            <th>이름</th>
+            <th>내용</th>
+            <th>날짜</th>
+        </thead>
+
+        <tbody class="table">
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>1</td>
+            <td>홍길자</td>
+            <td>안녕!</td>
+            <td>2023-01-02</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>2</td>
+            <td>김길자</td>
+            <td>안녕!</td>
+            <td>2023-01-02</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>3</td>
+            <td>이길자</td>
+            <td>안녕!</td>
+            <td>2023-01-02</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="check"></td>
+            <td>4</td>
+            <td>고길자</td>
+            <td>안녕!</td>
+            <td>2023-01-02</td>
+        </tr>
+
+        </tbody>
+
+        <script>
+            //하나씩 삭제 removeChild
+            var delOne  = document.getElementById("delOne");
+            delOne.onclick = function(){
+                var table = document.querySelector(".table");//tr의 부모요소
+
+                // console.log(table.firstElementChild);//첫번째 요소
+                // console.log(table.children);//배열..
+                // table.removeChild(지울 자식 요소);
+                if(table.firstElementChild==null){
+                    alert("데이터 없음");
+                    return;
+                }
+
+                table.removeChild(table.firstElementChild);
+
+            }
+
+            //일괄 삭제 remove
+            var check = document.querySelectorAll(".check");//체크박스 전부
+            var del  = document.getElementById("del");
+            del.onclick = function(){
+
+                // console.log(check[0].checked);
+                // console.log(check[1].checked);
+                // console.log(check[2].checked);
+                // console.log(check[3].checked);
+
+                // console.log(confirm("삭제 할거니?"));
+                if(confirm("정말 삭제 하시겠습니까?")==false){
+                    return;
+                }
+
+                for(var i = 0; i < check.length; i++){
+                    if(check[i].checked){
+                        check[i].parentElement.parentElement.remove();//tr삭제
+                    }
+                }
+
+            }
+
+            //일괄 선택 vs 일괄 해체
+            var allCheck = document.querySelector(".allCheck");
+            allCheck.onclick = function(){
+
+                // console.log(allCheck.checked);
+                if(allCheck.checked){//전부 체크로 변경
+                    for(var i = 0; i < check.length; i++){
+                        check[i].checked = true;
+                    }
+                }else{//전부 체크를 해제
+                    for(var i = 0; i < check.length; i++){
+                        check[i].checked = false;
+                    }
+                }
+
+            }
+
+
+        </script>
+
+</body>
+</html>

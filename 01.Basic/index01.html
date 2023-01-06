@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 외부 js링크(상대 or 절대경로) -->
+    <!-- js링크 순서는 반드시 head 있는것은 아니고, 파일에 렌더링순서에따라 달라질 수 있다. -->
+    <script src="index01.js"></script>
+    
+
+</head>
+<body>
+    
+
+
+    <script>
+    //동일 변수의 선언이 가능. 주의 
+    var a = 10; 
+    var a = 20;// var라는 키워드안써도됨. 변수라는것을 나타내기위해 쓰는거. 
+    //동일변수가능 마지막에 적힌게 인식 
+        a =100; // 변수의 변경 
+
+
+    console.log(a);  //콘솔출력
+    document.write(a); //html화면 출력  많이안씀.
+
+
+    //alert(a); //경고창
+    //confirm(a); //확인창
+    </script>
+</body>
+</html>

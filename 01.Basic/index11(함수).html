@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1st
+        /* function func1{
+        }
+        var a = func1; */
+
+        //a();//호이스팅 불가능 에러
+
+        var a = function(){
+            console.log('a함수');
+        }
+        a();
+
+        var b = function(x, y){
+            return x + y;
+        }
+        var result = b(1, 2);
+        console.log('b함수:' , result);
+
+        console.log('-------------------------------------------------------------');
+
+        //1. 익명함수로 변경해보기
+       /*  function method1(x, y, z){
+            if(x % 2 == 0){
+                return '짝수';
+            }else{
+                return '홀수';
+            }     
+        } */
+
+        var c = function(x){
+            return x % 2 == 0 ? "짝수" : "홀수";
+        }
+        var result1 = c(23);
+        console.log(result1);
+
+
+        //2.매개변수를 3개 받아서 평균을 반환하는 익명 함수를 선언
+        var d = function(x, y, z){
+            return (x+y+z)/3;
+        }
+        var result2 = d(1,2,3);
+        console.log(result2);
+
+        console.log('-------------------------------------------------------------');
+        //즉시 실행 함수
+
+        (function(x,y,z){
+            console.log('즉시실행');
+            return x + y + z;
+        })(1,2,3);
+
+    </script>
+</body>
+</html>

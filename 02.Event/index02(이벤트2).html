@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- id는 화면에서 보유해야한다. -->
+    <button id="btn">기본이벤트1</button>
+
+    <script>
+        var a = document.getElementById("btn");
+        a.onclick = function () {
+            console.log('기본이벤트');
+            console.log(this); //자기자신
+            console.log(a); //태그자신
+
+        }//익명함수를 a가 가지고잇는 온클릭 속성에 대입
+        // script는  태그보다 아래쪽에 있어야한다.
+    </script>
+</body>
+
+</html>

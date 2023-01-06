@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .toggle li {
+            display: inline-block;
+            padding: 15px 20px 14px;
+            width: 25%;
+            text-align: center;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+
+        .toggle-menu {
+            display: none;
+        }
+
+        .active {
+            display: block;
+            animation:fadeIn 1s ease-in-out;
+        }
+
+        /* 애니메이션 라이브러리사이트: https://michalsnik.github.io/aos/ */
+        /* 애니메이션 */
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+                background-color: aqua;
+                margin-left: -100px;
+            }to{
+                opacity: 1;
+                background-color: aquamarine;
+                margin-left: 0;
+            }
+        }
+    
+    </style>
+
+</head>
+
+<body>
+    <!--
+    1. ul에 이벤트 버블링을 이용해서 클릭이벤트를 걸고 클릭되는 타겟의 data-id를 얻습니다.
+    2. toggle-menu의 active속성을 삭제
+    3. data-id의 값에 알맞는 태그에 active속성을 추가하면됩니다.
+    -->
+    <section>
+        <ul class="toggle">
+            <li data-id="#toggle1">메뉴1</li>
+            <li data-id="#toggle2">메뉴2</li>
+            <li data-id="#toggle3">메뉴3</li>
+        </ul>
+
+        <div>
+            <div class="toggle-menu active" id="toggle1">
+                토글메뉴1
+            </div>
+            <div class="toggle-menu" id="toggle2">
+                토글메뉴2
+            </div>
+            <div class="toggle-menu" id="toggle3">
+                토글메뉴3
+            </div>
+        </div>
+
+    </section>
+<!-- 
+    <script>
+        var toggle = document.querySelector(".toggle");
+        var divs = document.querySelectorAll(".toggle-menu");
+
+        toggle.onclick = function() {
+            if(event.target.tagName != "LI") return;
+            
+            var targetId = event.target.dataset.id;
+            for(var i = 0; i < divs.length; i++) {
+                if(targetId.substr(1) == divs[i].id) {
+                    divs[i].classList.add("active");
+                } else {
+                    divs[i].classList.remove("active");
+                }
+
+            }
+        }
+    </script> -->
+  <script>
+        var toggle = document.querySelector(".toggle");
+        var toggle1 = document.getElementById("toggle1");
+        var toggle2 = document.getElementById("toggle2");
+        var toggle3 = document.getElementById("toggle3");
+
+        toggle.onclick = function(){
+
+            if(event.target.tagName!="LI") return;
+            var data = event.target.dataset.id;
+            console.log(data);
+
+            if(data=="#toggle1"){
+                if(toggle1.classList.contains("active")){
+                    return;
+                }else if(toggle2.classList.contains("active")){
+                    toggle1.classList.toggle("active");
+                    toggle2.classList.toggle("active");
+                    
+                }else if(toggle3.classList.contains("active")){
+                    toggle1.classList.toggle("active");
+                    toggle3.classList.toggle("active");
+                }
+                
+            }else if(data=="#toggle2"){
+                if(toggle2.classList.contains("active")){
+                    return;
+                }else if(toggle1.classList.contains("active")){
+                    toggle1.classList.toggle("active");
+                    toggle2.classList.toggle("active");
+                    
+                }else if(toggle3.classList.contains("active")){
+                    toggle3.classList.toggle("active");
+                    toggle2.classList.toggle("active");
+                }
+            }else if(data=="#toggle3"){
+                if(toggle3.classList.contains("active")){
+                    return;
+                }else if(toggle1.classList.contains("active")){
+                    toggle1.classList.toggle("active");
+                    toggle3.classList.toggle("active");
+                    
+                }else if(toggle2.classList.contains("active")){
+                    toggle2.classList.toggle("active");
+                    toggle3.classList.toggle("active");
+                }
+            }
+
+
+        }
+
+    </script> 
+</body>
+
+</html>

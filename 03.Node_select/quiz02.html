@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    (select에서 value 속성은 선택된 값을 의미합니다)<br><br>
+    change 이벤트
+    <h3 class="msg">단어를 선택하세요</h3>
+    </b>
+    <select id="sel">
+        <option value="1">선택</option>
+        <option value="2">hello</option>
+        <option value="3">안녕하세요</option>
+        <option value="4">你好</option>
+    </select>
+
+
+    <script>
+        var sel = document.getElementById("sel");
+        var msg = document.querySelector(".msg");
+
+        sel.onchange = function () {
+            var a = sel.options[sel.selectedIndex].value;
+            
+            if(a=="2"){
+                msg.innerHTML='영어 입니다';
+            }else if(a=="3"){
+                msg.innerHTML='한국어 입니다';
+            }else if(a=="4"){
+                msg.innerHTML='중국어 입니다';
+            }else{
+                msg.innerHTML= '단어를 선택하세요';
+            }
+           
+
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      width: 200px;
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>09 - quiz01</h2>
+  <!--
+    로컬스토리지를 이용하여 최근에 누른 2개의 정보를 불러오기
+    (페이지 이동하여 2개의 정보 표시)
+  -->
+
+  <div>
+    <div class="seasonImg">
+      <img src="img/1.jpg" alt="spring">
+      <img src="img/2.jpg" alt="summer">
+      <img src="img/3.jpg" alt="fall">
+      <img src="img/4.jpg" alt="winter">
+    </div>
+    <div>
+      <button id="btn1">최근 2개 정보 보기</button>
+    </div>
+  </div>
+
+  <script>
+    var seasonImg = document.querySelector(".seasonImg");
+    var btn1 = document.getElementById("btn1");
+    var cnt = 1;
+
+    seasonImg.addEventListener('click', createLocalStorage);
+    function createLocalStorage() {
+      if (event.target.tagName != "IMG") return;
+
+      if(localStorage.getItem("popup" + (cnt % 2 + 1)) == event.target.src) {
+        return;
+      };
+
+      localStorage.setItem("popup" + cnt, event.target.src);
+      cnt = cnt % 2 + 1;
+    }
+
+    btn1.onclick = function () {
+      window.open("quiz01(정민2).html", "quiz01(정민2)");
+    }
+  </script>
+</body>
+
+</html>

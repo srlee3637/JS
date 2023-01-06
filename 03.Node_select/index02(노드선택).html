@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btn">쿼리셀렉터확인</button>
+    <ul class="box">
+        <li>hi</li>
+        <li>bye</li>
+        <li>good afternoon</li>
+    </ul>
+    
+    <script>
+
+        var btn = document.querySelector("#btn"); //css선택자로 얻는다
+        // var li = document.querySelector(".box > li") //li태그를 얻는다(단일)
+        // console.log(li);
+
+        var lis = document.querySelectorAll(".box li"); //li태그를 얻는다(모두)
+        
+        btn.onclick = function(){
+            for(var i = 0; i < lis.length; i++){
+                console.log(lis[i]);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

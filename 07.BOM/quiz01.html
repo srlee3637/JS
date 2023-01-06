@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bgImg {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>애니메이션이 주기적으로 동작하려면 태그가 변경 되야합니다.</h3>
+    <div class="slide">
+        <img src="img/slide1.jpg" class="bgImg">
+    </div>
+
+    <script>
+        var slide = document.querySelector(".slide");
+        var img = document.querySelector(".slide>img");
+        var i = 1;
+        var id = window.setInterval(function() {
+            
+            img.remove();
+            
+            i++;
+            if(i > 4){
+                i=1;
+            }
+            slide.innerHTML = '<img src="img/slide' + i + '.jpg" class="bgImg">'
+            console.log(img);
+
+
+        }, 2000);//(실행시킬 함수, 인터벌) 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>JS카운트 만들기 - 인라인 이벤트와 this, innerHTML, value속성을 사용하면 됨</h3>
+    <input type="number" value="0" id="inputs"> 
+    <button onclick="calc(this)" value="+">+</button>
+    <button onclick="calc(this)" value="-">-</button>
+
+    <script>
+        var inputs = document.getElementById("inputs");
+        console.log(inputs);
+        console.log(inputs.value);
+
+        var count = 0;
+
+       
+
+        function calc(aaa){
+            
+            if(aaa.value=="+"){
+                count++;
+            }else{
+                count--;
+            }
+         
+            
+            if(count < 0){
+                alert('0 아래로 못내려감요')
+                count=0;
+            }
+            console.log(count);
+            inputs.value = count;
+          
+        }
+    </script>
+
+</body>
+</html>

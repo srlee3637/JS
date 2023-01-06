@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>네이버 타이머 도전하기</h3>
+    <span>조건</span><br>
+    <span>1.select태그는 시간:99 or 분:60 or 초:60으로 화면이 생성될 때 엘리먼트 생성기법으로 처리합니다.</span><br>
+    <span>2.시간설정 버튼을 클릭하면 시간이 세팅됩니다.</span><br>
+    <span>3.타이머시작버튼은 토글형태로 타이머가 동작중이라면 일시정지 버튼으로 활성화 됩니다</span><br>
+    <span>4.사용자가 버튼을 잘못클릭하는 경우를 고려하여, 어떠한 경우라도 중복으로 타이밍이 발생되면 안됩니다.</span><br>
+
+    <h3>시간을 선택하세요</h3>
+
+    <select id="hour">
+
+    </select>
+
+    <select id="minute">
+
+    </select>
+    <select id="second">
+
+    </select>
+
+    <button id="timeset">시간설정</button>
+    <button id="timerstart">타이머시작</button>
+    <br>
+
+    <span id="print1"></span><span id="print2"></span><span id="print3"></span>
+
+    <script>
+        var hour = document.getElementById("hour");
+        var minute = document.getElementById("minute");
+        var second = document.getElementById("second");
+        var timeset = document.getElementById("timeset");
+        var timerstart = document.getElementById("timerstart");
+        var print1 = document.getElementById("print1");
+        var print2 = document.getElementById("print2");
+        var print3 = document.getElementById("print3");
+
+
+        var option1 = "";
+        for (var i = 0; i < 100; i++) {
+            option1 += "<option value=" + i + ">" + i + "</option>";
+        }
+        var option2 = "";
+        for (var i = 0; i < 60; i++) {
+            option2 += "<option value=" + i + ">" + i + "</option>";
+        }
+
+
+        hour.innerHTML = option1;
+        minute.innerHTML = option2;
+        second.innerHTML = option2;
+
+
+        timeset.onclick = function () {
+
+            print1.innerHTML = hour.value + ":" ;
+            print2.innerHTML = minute.value + ":";
+            print3.innerHTML = second.value;
+          
+        }
+
+        var id = 0; 
+        timerstart.onclick = function () {
+            
+            if (timerstart.innerHTML == "타이머시작") {
+                var h = parseInt(print1.innerHTML);
+                var m = parseInt(print2.innerHTML);
+                var s = parseInt(print3.innerHTML);
+                timerstart.innerHTML = "일시정지";
+                id = window.setInterval(function () {
+
+                    if (s == 0) {
+                        if (m == 0) {
+                            if (h == 0) {
+                                //멈춤
+                                return;
+                            } else {
+                                h--;
+                                m = 59;
+                                s = 59;
+                                print1.innerHTML = h + ":" ;
+                                print2.innerHTML = m + ":";
+                                print3.innerHTML = s;
+                            }
+                        } else {
+                            m--;
+                            s = 59;
+                            print2.innerHTML = m + ":";
+                            print3.innerHTML = s;
+                        }
+                    } else {
+                        s--;
+                        console.log(s);
+                        print3.innerHTML = s;
+                    }
+                }, 1000);//(실행시킬 함수, 인터벌) 
+            }else {
+                window.clearInterval(id);
+                timerstart.innerHTML = "타이머시작"
+            }
+
+        }
+    </script>
+</body>
+
+</html>
